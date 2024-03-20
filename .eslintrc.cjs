@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['**/vendor*'],
   overrides: [
     {
       env: {
@@ -32,5 +33,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'import/no-extraneous-dependencies': [0, { devDependencies: 0 }],
+    '@typescript-eslint/no-explicit-any': 0,
+    'react/require-default-props': 0,
   },
 };

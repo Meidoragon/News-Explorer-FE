@@ -1,0 +1,21 @@
+@font-face {
+  src: url('../../vendor/fonts/Roboto-Medium.woff');
+  font-family: 'Roboto-Medium';
+}
+
+@font-face {
+  src: url('../../vendor/fonts/RobotoSlab-Bold.woff');
+  font-family: 'Roboto-Slab';
+}
+
+.page {
+  font-family: 'Roboto-Medium';
+  margin: 0;
+}
+
+.background-wrapper {
+  background-image: url('../../images/search-section_bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
