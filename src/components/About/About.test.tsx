@@ -1,8 +1,18 @@
-import { describe, it, expect } from 'vitest';
-// import { render, RenderResult } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import About from './About';
 
-describe('tests exist', () => {
-  it('runs', () => {
-    expect(1).toBe(1);
+describe('about', () => {
+  beforeEach(() => {
+    render(<About />);
+  });
+  it('renders all items', () => {
+    const headers: HTMLElement[] = screen.getAllByRole('heading');
+    const images: HTMLElement[] = screen.getAllByRole('img');
+    const paragraphs = screen.getAllByText('Lorem', { exact: false });
+
+    expect(headers.length).toBe(1);
+    expect(images.length).toBe(1);
+    expect(paragraphs.length).toBe(1);
   });
 });
