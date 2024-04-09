@@ -10,6 +10,10 @@
   height: 40vw;
   max-width: 464px;
   max-height: 464px;
+  /* overflow: hidden; */
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: right;
 }
 
 .about__text-wrapper {

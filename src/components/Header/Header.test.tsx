@@ -8,7 +8,7 @@ const headerTitleTest = () => {
   const title: HTMLElement = screen.getByRole('heading', { level: 1 });
   expect(title).toHaveTextContent('NewsExplorer');
 };
-const setIsLoggedIn = () => { };
+const setIsLoggedIn = () => {};
 
 describe('Header not logged in', () => {
   beforeEach(() => {
