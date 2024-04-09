@@ -1,6 +1,6 @@
 @font-face {
-  src: url('../../vendor/fonts/Roboto-Medium.woff');
-  font-family: 'Roboto-Medium';
+  src: url('../../vendor/fonts/Roboto-Regular.woff');
+  font-family: 'Roboto';
 }
 
 @font-face {
@@ -9,7 +9,7 @@
 }
 
 .page {
-  font-family: 'Roboto-Medium';
+  font-family: 'Roboto';
   margin: 0;
 }
 

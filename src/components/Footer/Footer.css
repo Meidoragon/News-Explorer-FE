@@ -1,0 +1,43 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 106px;
+  height: 80px;
+}
+
+.footer__copy-text {
+  padding: 0;
+  margin: 0;
+  color: #b6bcbf;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.footer__button-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+}
+
+.footer__button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #fff0;
+}
+
+.text-button {
+  color: #1a1b22;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 14px 0 0;
+}
+
+.footer__button-icon {
+  flex-shrink: 0;
+}
