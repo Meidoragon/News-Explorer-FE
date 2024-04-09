@@ -1,8 +1,15 @@
-import { describe, it, expect } from 'vitest';
-// import { render, RenderResult } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import SearchForm from './SearchForm';
 
 describe('tests exist', () => {
-  it('runs', () => {
-    expect(1).toBe(1);
+  beforeEach(() => {
+    render(<SearchForm />);
+  });
+  it('renders expected number of elements', () => {
+    const inputs = screen.getAllByRole('textbox');
+    const buttons = screen.getAllByRole('button');
+    expect(inputs.length).toBe(1);
+    expect(buttons.length).toBe(1);
   });
 });
