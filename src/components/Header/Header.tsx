@@ -20,7 +20,7 @@ function Header({
   // };
 
   const loggedInHeader = (
-    <div className="header">
+    <header className="header">
       <h1 className="header__title">NewsExplorer</h1>
       <div className="header__button-group">
         <NavLink className="header__nav-item header__button" role="button">
@@ -41,7 +41,7 @@ function Header({
           />
         </button>
       </div>
-    </div>
+    </header>
   );
 
   const loggedOutHeader = (
