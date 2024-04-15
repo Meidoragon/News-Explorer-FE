@@ -3,9 +3,22 @@ import { render, screen } from '@testing-library/react';
 import NewsCard from './NewsCard';
 import testArticles from '../../utils/testArticles';
 
+interface SVG {
+  className: string;
+  src: string;
+  alt: string;
+}
+
+/*
+ * It feels a bit wrong to have the test be checking that the image src is correct.
+ * TODO: Find better way?
+ */
 const svgCheck = (e: HTMLElement): boolean => {
   const keys: string[] = Object.keys(e);
-  return e[keys[1]].src.endsWith('icon_bookmark_active.svg');
+  const key: string = keys[1];
+  // @ts-expect-error: key is unknowable at compile time, so we must get it at runtime
+  const item: SVG = e[key as keyof HTMLElement];
+  return item.src.endsWith('icon_bookmark_active.svg');
 };
 
 describe('newscard', () => {
@@ -17,7 +30,7 @@ describe('newscard', () => {
 
     expect(images.length).toBe(2);
     expect(headers.length).toBe(1);
-    expect(paragraphs.length).toBe(4); // l10 should get one header plus three other text sources
+    expect(paragraphs.length).toBe(4);
     expect(svgCheck(images[1])).toBeTruthy();
   });
 
@@ -29,7 +42,7 @@ describe('newscard', () => {
 
     expect(images.length).toBe(2);
     expect(headers.length).toBe(1);
-    expect(paragraphs.length).toBe(4); // l10 should get one header plus three other text sources
+    expect(paragraphs.length).toBe(4);
     expect(svgCheck(images[1])).toBeFalsy();
   });
 });
