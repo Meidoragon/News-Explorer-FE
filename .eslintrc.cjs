@@ -35,5 +35,6 @@ module.exports = {
     'import/no-extraneous-dependencies': [0, { devDependencies: 0 }],
     '@typescript-eslint/no-explicit-any': 0,
     'react/require-default-props': 0,
+    'no-underscore-dangle': 0,
   },
 };
