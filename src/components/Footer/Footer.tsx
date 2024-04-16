@@ -1,9 +1,10 @@
+import { ReactElement } from 'react';
 import ghLogo from '../../images/icon_github.svg';
 import fbLogo from '../../images/icon_fb.svg';
 
 import './Footer.css';
 
-function Footer() {
+function Footer(): ReactElement {
   return (
     <footer className="footer">
       <p className="footer__copy-text">

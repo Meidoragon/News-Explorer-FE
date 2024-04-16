@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import './Header.css';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, ReactElement, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoutIcon from '../../images/icon_logout.svg';
 
@@ -14,7 +14,7 @@ function Header({
   isLoggedIn,
   setIsLoggedIn,
   userName = '',
-}: HeaderProps): JSX.Element {
+}: HeaderProps): ReactElement {
   // const onLoginClick = () => {
   //   setIsLoggedIn(!isLoggedIn);
   // };

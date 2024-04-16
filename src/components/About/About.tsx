@@ -1,7 +1,8 @@
+import { ReactElement } from 'react';
 import './About.css';
 import aboutImage from '../../images/about_image.png';
 
-export default function About() {
+export default function About(): ReactElement {
   return (
     <section className="about">
       <img src={aboutImage} className="about__image" alt="author avatar" />

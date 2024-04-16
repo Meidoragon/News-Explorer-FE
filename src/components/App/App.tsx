@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Header from '../Header/Header';
 import './App.css';
 import Main from '../Main/Main';
+import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 
-function App() {
+import testArticles from '../../utils/testArticles';
+import { NewsArticle } from '../../utils/types';
+
+function App(): ReactElement {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [articleList, setArticlesList] = useState<NewsArticle[]>(testArticles);
 
   return (
     <>
@@ -18,6 +23,7 @@ function App() {
         />
         <Main />
       </section>
+      {articleList.length > 0 ? <NewsCardList articles={articleList} /> : ''}
       <About />
       <Footer />
     </>

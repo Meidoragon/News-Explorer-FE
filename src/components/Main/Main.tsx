@@ -1,7 +1,8 @@
+import { ReactElement } from 'react';
 import './Main.css';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Main() {
+function Main(): ReactElement {
   return (
     <main className="main">
       <div className="main__wrapper">
