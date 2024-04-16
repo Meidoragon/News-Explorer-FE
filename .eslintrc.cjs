@@ -36,5 +36,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 0,
     'react/require-default-props': 0,
     'no-underscore-dangle': 0,
+    'no-plusplus': [0, { allowForLoopAfterthoughts: 1 }],
   },
 };
