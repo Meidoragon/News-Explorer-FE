@@ -8,11 +8,20 @@ import Footer from '../Footer/Footer';
 
 import testArticles from '../../utils/testArticles';
 import { NewsArticle } from '../../utils/types';
+import Preloader from '../Preloader/Preloader';
+
+enum SearchState {
+  None,
+  Searching,
+  Complete,
+}
 
 function App(): ReactElement {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [articleList, setArticlesList] = useState<NewsArticle[]>(testArticles);
-
+  const [currentSearchState, setCurrentSearchState] = useState<SearchState>(
+    SearchState.Searching
+  );
   return (
     <>
       <section className="background-wrapper">
@@ -23,7 +32,10 @@ function App(): ReactElement {
         />
         <Main />
       </section>
-      {articleList.length > 0 ? <NewsCardList articles={articleList} /> : ''}
+      {currentSearchState === SearchState.Complete && (
+        <NewsCardList articles={articleList} />
+      )}
+      {currentSearchState === SearchState.Searching && <Preloader />}
       <About />
       <Footer />
     </>
