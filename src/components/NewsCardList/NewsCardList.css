@@ -1,0 +1,45 @@
+.card-list {
+  background-color: #f5f6f7;
+  padding: 80px 104px;
+}
+
+.card-list__header {
+  margin: 0 0 64px;
+  font-size: 40px;
+  font-weight: 400;
+  font-family: 'RobotoSlab', serif;
+}
+
+.card-list__article-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-rows: auto;
+  justify-content: center;
+  justify-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.card-list__article-card {
+  position: relative;
+  left: -1px;
+  list-style: none;
+}
+
+.card-list__extend-button {
+  margin: 64px auto 0;
+  width: 288px;
+  height: 64px;
+  border: none;
+  border-radius: 80px;
+  font-size: 25px;
+  color: #1a1b22;
+  background-color: #e8e8e8;
+  position: relative;
+  left: calc(50% - 144px);
+}
+
+.button-active {
+  cursor: pointer;
+}

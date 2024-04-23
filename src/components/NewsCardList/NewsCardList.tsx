@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 
@@ -8,12 +8,12 @@ interface CardListProps {
   articles: NewsArticle[];
 }
 
-function createCards(articleList: NewsArticle[], parentComponentName: string) {
+function createCards(articleList: NewsArticle[]): ReactElement {
   return (
-    <ul className={`${parentComponentName}__article-cards`}>
+    <ul className="card-list__article-cards">
       {articleList.map((card) => {
         return (
-          <li key={card._id} className={`${parentComponentName}__article-card`}>
+          <li key={card._id} className="card-list__article-card">
             <NewsCard article={card} />
           </li>
         );
@@ -32,7 +32,7 @@ function getThreeArticles(
   });
 }
 
-function NewsCardList({ articles }: CardListProps) {
+function NewsCardList({ articles }: CardListProps): ReactElement {
   const [visibleArticles, setVisibleArticles] = useState<NewsArticle[]>([]);
   const [articleCount, setArticleCount] = useState<number>(3);
 
@@ -49,11 +49,12 @@ function NewsCardList({ articles }: CardListProps) {
   return (
     <section className="card-list">
       <h2 className="card-list__header">Search results</h2>
-      {createCards(visibleArticles, 'card-list')}
+      {createCards(visibleArticles)}
       <button
         type="button"
-        className="card-list__extend-button"
+        className={`card-list__extend-button ${articleCount < articles.length ? 'button-active' : ''}`}
         onClick={addMoreArticles}
+        name="show-more"
       >
         Show more
       </button>

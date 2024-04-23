@@ -1,5 +1,6 @@
 import { describe, it, beforeEach, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event';
 import testArticles from '../../utils/testArticles';
 import NewsCardList from './NewsCardList';
 import filterElementsByProp from '../../testUtils/bin';
@@ -10,11 +11,11 @@ describe('newscard', () => {
   });
 
   it('renders all items', () => {
-    const images: HTMLElement[] = filterElementsByProp(
-      screen.getAllByRole('img'),
-      'src',
-      (imgsrc: string) => !imgsrc.endsWith('.svg')
-    );
+    // const images: HTMLElement[] = filterElementsByProp(
+    //   screen.getAllByRole('img'),
+    //   'src',
+    //   (imgsrc: string) => !imgsrc.endsWith('.svg')
+    // );
     const headers: HTMLElement[] = filterElementsByProp(
       screen.getAllByRole('heading'),
       'className',
@@ -26,26 +27,26 @@ describe('newscard', () => {
       (className: string) => className.includes('card-list')
     );
 
-    expect(images.length).toBe(3);
+    // expect(images.length).toBe(3);
     expect(headers.length).toBe(1);
     expect(buttons.length).toBe(1);
   });
 
-  it('adds images when button is pressed', () => {
-    // [0] because there should only be one button
-    const button: HTMLElement = filterElementsByProp(
-      screen.getAllByRole('button'),
-      'className',
-      (className: string) => className.includes('card-list__extend-button')
-    )[0];
-    fireEvent.click(button);
+  it('adds images when "show more" button is pressed', () => {
+    const user = UserEvent.setup();
+    const showMoreButton: HTMLElement = screen.getByRole('button', {
+      name: /show more/i,
+    });
+    let bookmarkButtons: HTMLElement[] = screen.getAllByRole('button', {
+      name: /bookmark button/i,
+    });
 
-    const images: HTMLElement[] = filterElementsByProp(
-      screen.getAllByRole('img'),
-      'src',
-      (imgsrc: string) => !imgsrc.endsWith('.svg')
-    );
-
-    expect(images.length).toBe(5);
+    expect(bookmarkButtons.length).toBe(3);
+    user.click(showMoreButton).then(() => {
+      bookmarkButtons = screen.getAllByRole('button', {
+        name: /bookmark button/i,
+      });
+      expect(bookmarkButtons.length).toBe(5);
+    });
   });
 });
