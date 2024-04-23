@@ -2,9 +2,7 @@ interface BookmarkIconProps {
   name: string;
 }
 
-export default function BookmarkIcon({ name }: BookmarkIconProps): JSXElement {
-  // all of this so I can use stroke="currentColor"
-  // probably not worth it
+export default function BookmarkIcon({ name }: BookmarkIconProps): JSX.Element {
   return (
     <svg
       width="14"
