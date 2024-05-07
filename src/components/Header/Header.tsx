@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import './Header.css';
-import { Dispatch, ReactElement, SetStateAction } from 'react';
-import { NavLink } from 'react-router-dom';
-import logoutIcon from '../../images/icon_logout.svg';
+import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import logoutIconBlack from '../../images/icon_logout_black.svg';
+import logoutIconWhite from '../../images/icon_logout_white.svg';
 
 interface HeaderProps {
   isLoggedIn: boolean;
@@ -15,27 +16,45 @@ function Header({
   setIsLoggedIn,
   userName = '',
 }: HeaderProps): ReactElement {
-  // const onLoginClick = () => {
-  //   setIsLoggedIn(!isLoggedIn);
-  // };
+  const onLoginClick = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+  const backgroundIsLight = useLocation().pathname === '/saved-news';
 
-  const loggedInHeader = (
-    <header className="header">
-      <h1 className="header__title">NewsExplorer</h1>
+  return (
+    <header className={`header ${backgroundIsLight ? 'light-bg' : ''}`}>
+      <h1 className={`header__title ${backgroundIsLight ? 'light-bg' : ''}`}>
+        NewsExplorer
+      </h1>
       <div className="header__button-group">
-        <NavLink className="header__nav-item header__button" role="button">
-          Home
-        </NavLink>
         <NavLink
-          className="header__nav-item header__button button-active"
+          to="/"
+          className={`header__nav-item header__button ${backgroundIsLight ? 'light-bg' : 'button-active'}`}
           role="button"
         >
-          Saved Articles
+          Home
         </NavLink>
-        <button className="header__border-button" type="button">
-          <p className="header__button-text">{userName}</p>
+        {isLoggedIn && (
+          <NavLink
+            to="/saved-news"
+            className={`header__nav-item header__button ${backgroundIsLight ? 'light-bg button-active' : ''}`}
+            role="button"
+          >
+            Saved Articles
+          </NavLink>
+        )}
+        <button
+          className={`header__border-button ${backgroundIsLight ? 'light-bg' : ''}`}
+          type="button"
+          onClick={onLoginClick}
+        >
+          <p
+            className={`header__button-text ${backgroundIsLight ? 'light-bg' : ''}`}
+          >
+            {isLoggedIn ? userName : 'Sign In'}
+          </p>
           <img
-            src={logoutIcon}
+            src={backgroundIsLight ? logoutIconBlack : logoutIconWhite}
             alt="logout icon"
             className="header__logout-icon"
           />
@@ -43,16 +62,6 @@ function Header({
       </div>
     </header>
   );
-
-  const loggedOutHeader = (
-    <div className="header">
-      <h1>NewsExplorer</h1>
-      <button type="button">Home</button>
-      <button type="button">Sign In</button>
-    </div>
-  );
-
-  return isLoggedIn ? loggedInHeader : loggedOutHeader;
 }
 
 export default Header;
